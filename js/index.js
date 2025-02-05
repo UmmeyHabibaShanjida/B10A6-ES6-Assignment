@@ -25,9 +25,9 @@ const dogCategories = () =>{
 // Load Card Categories
 const loadCardCategories = (id) =>{
   // alert(id);
-  fetch(`https://openapi.programming-hero.com/api/peddy/${id}`)
+  fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
   .then(res => res.json())
-  .then(data =>displayCards(data.category))
+  .then(data =>console.log(data.category))
   .catch(error => console.error(error));
 };
 
@@ -65,22 +65,22 @@ const displayCards = (pets) =>{
     <div class="flex gap-2">
     <img width="20" height="20" src="https://img.icons8.com/material-outlined/24/poodle.png" alt="poodle"/>
     <p>Breed:${pet.breed}</p>
-    ${pet.breed !== pets.breed ? '': 'NoInfo'}
+    ${pet.breed !== pets.breed ? '': 'NotFound'}
     </div>
     <div class="flex gap-2">
     <img width="20" height="20" src="https://img.icons8.com/badges/48/birth-date.png" alt="birth-date"/>
     <p>Birth:${pet.date_of_birth}</p>
-    ${pet.date_of_birth !== pets.date_of_birth ? '': 'NoInfo'}
+    ${pet.date_of_birth !== pets.date_of_birth ? '': 'NotFound'}
     </div>
     <div class="flex gap-2">
     <img width="20" height="20" src="https://img.icons8.com/small/16/transgender.png" alt="transgender"/>
     <p>Gender:${pet.gender}</p>
-    ${pet.gender !== pets.gender ? '' : 'NoInfo'}
+    ${pet.gender !== pets.gender ? '' : 'NotFound'}
     </div>
     <div class="flex gap-2 border-b border-black">
     <img width="20" height="20" src="https://img.icons8.com/badges/48/price-tag-usd.png" alt="price-tag-usd"/>
     <p>Price:${pet.price}</p>
-    ${pet.price !== pets.price ? '' : 'NoInfo'}
+    ${pet.price !== pets.price ? '' : 'NotFound'}
     </div>
     <div class="card-actions justify-center gap-5">
     <img class="border border-black rounded-md" width="28" height="28" src="https://img.icons8.com/badges/48/facebook-like.png" alt="facebook-like"/>
@@ -101,7 +101,7 @@ const displayCategories = (information) =>{
         // create buttons
         const buttonContainer = document.createElement('div');
         buttonContainer.innerHTML =`
-        <button onclick="loadCardCategories(${categories.category})" class="btn btn-lg btn-wide btn-outline mx-10 text-2xl"><img src=${categories.category_icon}/>
+        <button onclick="loadCardCategories(${categories.petId})" class="btn btn-lg btn-wide btn-outline mx-10 text-2xl"><img src=${categories.category_icon}/>
         ${categories.category}</button>
         `;
         // display buttons
